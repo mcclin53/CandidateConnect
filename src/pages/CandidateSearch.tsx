@@ -6,7 +6,13 @@ import Candidate from '../Candidate.interface';
 
 const CandidateSearch = () => {
 
-const [searchGithub, searchGithubUser] = useState ({
+const [candidates, setCandidates] = useState<Candidate[]>([]);
+const [searchTerm, setSearchTerm] = useState('');
+
+const handleSearch = async () => {
+  const results = await searchGithub(setSearchTerm);
+  setCandidates(results);
+};
  Candidate: ''
 });
   return <h1>CandidateSearch</h1>;
