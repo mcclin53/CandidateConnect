@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
-import Candidate from '../Candidate.interface';
-
-
+import Candidate from '../interfaces/Candidate.interface';
 
 const CandidateSearch = () => {
 
-const [candidates, setCandidates] = useState<Candidate[]>([]);
-const [searchTerm, setSearchTerm] = useState('');
+const [candidate, setCandidate] = useState<Candidate | null>(null);
 
 const handleSearch = async () => {
-  const results = await searchGithub(setSearchTerm);
-  setCandidates(results);
-};
+  const candidates = await searchGithub();
+  console.log('candidates', candidates);
+  return;
+}
+
  Candidate: ''
 });
   return <h1>CandidateSearch</h1>;
