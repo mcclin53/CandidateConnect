@@ -6,6 +6,12 @@ const CandidateSearch = () => {
 
 const [candidate, setCandidate] = useState<Candidate | null>(null);
 
+const hasSufficientInfo = (c: any) => {
+  const fields = [c.location, c.email, c.bio, c.name, c.company];
+  const missingCount = fields.filter(f => !f).length;
+  return missingCount <= 2;
+};
+
   const handleSearch = async () => {
   const candidates = await searchGithub();
     console.log('candidates', candidates);
@@ -17,16 +23,10 @@ const [candidate, setCandidate] = useState<Candidate | null>(null);
 for (let i = 0; i < candidates.length; i++) {
   const login = candidates[i].login;
   const candidateData = await searchGithubUser(login);
-  if (
-    candidateData.location &&
-    candidateData.email &&
-    candidateData.bio &&
-    candidateData.name &&
-    candidateData.company
-  ) {
-  setCandidate(candidateData);
-  break;
-    }
+  if (hasSufficientInfo(candidateData)) {
+    setCandidate(candidateData);
+    break;
+  }
   }
 };
 
