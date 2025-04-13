@@ -11,14 +11,14 @@ export default defineConfig({
       '@pages': '/src/pages',
       '@api': '/src/api',
       '@interfaces': '/src/interfaces',
-    },
+    }
   },
   server: {
     host: '0.0.0.0', // Bind to 0.0.0.0 to listen on all interfaces (needed for Render)
     port: Number(process.env.PORT) || 3000, // Use the PORT provided by Render, fallback to 3000
-    allowedHosts: ["candidate-search-3-dpyh.onrender.com"], // Add this host to allowed hosts
+    allowedHosts: ["candidateconnect.onrender.com"], // Add this host to allowed hosts
   },
   preview: {
-    allowedHosts: ["candidate-search-3-dpyh.onrender.com"],
+    allowedHosts: ["candidateconnect.onrender.com"],
   },
 });
