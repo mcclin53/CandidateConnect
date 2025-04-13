@@ -4,7 +4,7 @@ const Nav = () => {
   // TODO: Add necessary code to display the navigation bar and link between the pages
   return (
     <header>
-      <nav className="nav text-left fixed-top">
+      <nav className="nav text-left fixed-top" style={{justifyContent: 'center'}}>
         <Link 
           className="nav-link nav-item" to="/">
           Candidate Search

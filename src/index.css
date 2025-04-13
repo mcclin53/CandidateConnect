@@ -88,6 +88,7 @@ tr {
   border-radius: 10px;
   background-color: #000;
   color: white;
+  height: 20px;
 }
 
 tbody tr:nth-child(odd) {

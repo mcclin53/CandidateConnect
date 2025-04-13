@@ -41,7 +41,9 @@ const SavedCandidates = () => {
               {candidates.map((candidate) => (
                 <tr key={candidate.login}>
                   <td>
-                    <img src={candidate.avatar_url} alt={`${candidate.name}'s avatar`}/>
+                    <img src={candidate.avatar_url}
+                    alt={`${candidate.name}'s avatar`}
+                    style={{ width: "50px", height: "50px"}}/>
                   </td>
                   <td>{candidate.login}</td>
                   <td>{candidate.location}</td>

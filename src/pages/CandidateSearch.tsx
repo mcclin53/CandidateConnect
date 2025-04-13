@@ -14,13 +14,22 @@ const [candidate, setCandidate] = useState<Candidate | null>(null);
       console.error('No candidates returned from searchGithub');
       return;
     }
-
-  const login = candidates[0].login;
-
+for (let i = 0; i < candidates.length; i++) {
+  const login = candidates[i].login;
   const candidateData = await searchGithubUser(login);
+  if (
+    candidateData.location &&
+    candidateData.email &&
+    candidateData.bio &&
+    candidateData.name &&
+    candidateData.company
+  ) {
   setCandidate(candidateData);
-  };
-  
+  break;
+    }
+  }
+};
+
   const saveCandidate = () => {
     if (!candidate) return;
 
@@ -37,7 +46,7 @@ const [candidate, setCandidate] = useState<Candidate | null>(null);
 
   return (
     <div>
-      <h1>Candidate Search</h1>
+      <h1 style={{justifyContent: 'center'}}>Candidate Search</h1>
       {candidate && (
         <div>
         <img src={candidate.avatar_url} alt={`${candidate.name}'s avatar`}/>
@@ -53,9 +62,9 @@ const [candidate, setCandidate] = useState<Candidate | null>(null);
     </div>
   )
 }
-    <div>
-      <button type="button" onClick={handleSearch}>-</button>
-      <button type="button" onClick={saveCandidate}>+</button>
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '100px' }}>
+      <button type="button" onClick={handleSearch}>Next -</button>
+      <button type="button" onClick={saveCandidate}>Save +</button>
     </div>
     </div>
     );
