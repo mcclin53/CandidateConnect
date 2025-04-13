@@ -10,6 +10,11 @@ const [candidate, setCandidate] = useState<Candidate | null>(null);
   const candidates = await searchGithub();
     console.log('candidates', candidates);
 
+    if (!candidates || candidates.length === 0) {
+      console.error('No candidates returned from searchGithub');
+      return;
+    }
+
   const login = candidates[0].login;
 
   const candidateData = await searchGithubUser(login);
